@@ -1,7 +1,7 @@
-package org.dcs.ui.controller;
+package org.dcs.controller;
 
+import org.dcs.model.Student;
 import org.dcs.service.StudentService;
-import org.dcs.ui.model.domain.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

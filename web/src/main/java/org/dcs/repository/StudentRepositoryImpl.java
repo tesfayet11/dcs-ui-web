@@ -3,7 +3,7 @@ package org.dcs.repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.dcs.ui.model.domain.Student;
+import org.dcs.model.Student;
 import org.springframework.stereotype.Repository;
 
 @Repository("studentRepository")

@@ -1,4 +1,4 @@
-package org.dcs.ui.model.domain;
+package org.dcs.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

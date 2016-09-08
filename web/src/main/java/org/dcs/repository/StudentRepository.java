@@ -1,6 +1,6 @@
 package org.dcs.repository;
 
-import org.dcs.ui.model.domain.Student;
+import org.dcs.model.Student;
 
 public interface StudentRepository {
 	
