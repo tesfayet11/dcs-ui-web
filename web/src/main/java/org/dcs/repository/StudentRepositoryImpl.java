@@ -3,8 +3,9 @@ package org.dcs.repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.dcs.model.Student;
 import org.springframework.stereotype.Repository;
+
+import org.dcs.model.Student;
 
 @Repository("studentRepository")
 public class StudentRepositoryImpl implements StudentRepository {
