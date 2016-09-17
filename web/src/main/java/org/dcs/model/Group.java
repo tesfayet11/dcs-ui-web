@@ -12,8 +12,10 @@ import javax.persistence.Table;
 @Entity
 @Table(schema = "test", name = "groups")
 public class Group implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	private String id;
+	private String groupId;
 
 	@Column
 	private String name;
@@ -23,41 +25,41 @@ public class Group implements Serializable {
 
 	// this is where the problem is happening
 	@ManyToOne
-	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	@JoinColumn(name = "user_id", referencedColumnName = "userId")
 	private User owner;
-
-	private static final long serialVersionUID = 1L;
 
 	public Group() {
 		super();
-	}
-
-	public String getId() {
-		return this.id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public String getGroupId() {
+		return groupId;
+	}
+
+	
+
+	public String getName() {
+		return this.name;
 	}
 
 	public User getOwner() {
 		return this.owner;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public void setOwner(User user) {

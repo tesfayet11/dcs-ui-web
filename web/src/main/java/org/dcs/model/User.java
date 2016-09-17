@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -18,9 +19,9 @@ import javax.persistence.Table;
 @Table(schema = "test", name = "users")
 public class User implements Serializable {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
-	private String id;
+	private String userId;
 
 	@Column
 	private String email;
@@ -32,7 +33,7 @@ public class User implements Serializable {
 	private Set<Group> ownedGroups;
 
 	@ManyToMany
-	@JoinTable(name = "UserGroups", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "Group_id", referencedColumnName = "id"))
+	@JoinTable(name = "UserGroups", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "userId"), inverseJoinColumns = @JoinColumn(name = "groupId", referencedColumnName = "groupId"))
 	private Set<Group> belongsToGroups;
 
 	private static final long serialVersionUID = 1L;
@@ -42,11 +43,11 @@ public class User implements Serializable {
 	}
 
 	public String getId() {
-		return this.id;
+		return this.userId;
 	}
 
 	public void setId(String id) {
-		this.id = id;
+		this.userId = id;
 	}
 
 	public String getEmail() {

@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -12,25 +14,34 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class School   implements Serializable  {
+
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -8088622180178826024L;
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long schoolId;
 	private String schoolName;
 	
 	@OneToOne
-	@JoinColumn(name = "addressId")
+	@JoinColumn(name = "addressId", foreignKey = @ForeignKey(name = "FK_ADDRESS"))
 	private Address address;
 	private String schoolCode;
 	
 	@OneToMany(mappedBy="school")
 	private Set<Student> students;
 	
+	@OneToMany(mappedBy="school")
+	private Set<SchoolPersonnel> schoolPersonels;
+	
+	public Set<SchoolPersonnel> getSchoolPersonels() {
+		return schoolPersonels;
+	}
+	public void setSchoolPersonels(Set<SchoolPersonnel> schoolPersonels) {
+		this.schoolPersonels = schoolPersonels;
+	}
 	public long getSchoolId() {
 		return schoolId;
 	}

@@ -2,23 +2,25 @@ package org.dcs.model;
 
 import java.io.Serializable;
 
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
 @MappedSuperclass
-//@Inheritance
 public abstract class Person   implements Serializable  {
 	
+		
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 4074037191252511751L;
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
 	private String firstName;
@@ -26,7 +28,7 @@ public abstract class Person   implements Serializable  {
 	private String lastName;
 	
 	@OneToOne
-	@JoinColumn(name = "addressId")
+	@JoinColumn(name = "addressId", foreignKey = @ForeignKey(name = "FK_ADDRESS"))
 	private Address address;
 	
 	public String getFirstName() {

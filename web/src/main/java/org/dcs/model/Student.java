@@ -5,10 +5,7 @@ import java.io.Serializable;
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -19,15 +16,14 @@ public class Student extends Person   implements Serializable  {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	
+	private static final long serialVersionUID = 6033697974524969695L;
+
 	@ManyToOne
-	@JoinColumn(name = "guardianId")
+	@JoinColumn(name = "guardianId", foreignKey = @ForeignKey(name = "FK_GUARDIAN"))
 	private Guardian guardian; 
 	
 	@ManyToOne
-	@JoinColumn(name = "schoolId")
+	@JoinColumn(name = "schoolId", foreignKey = @ForeignKey(name = "FK_SCHOOL"))
 	private School school;
 	
 	
